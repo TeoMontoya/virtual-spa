@@ -78,10 +78,11 @@ const VirtualSpa = () => {
   // Your existing love notes
   const loveNotes = [
     "I love how you scrunch your nose when you laugh",
-    "Remember when we first met? My heart still beats the same way",
+    "Remember when we first kissed? My heart still beats the same way",
     "Your smile brightens my darkest days",
     "Distance means so little when someone means so much",
     "Every day with you is a wonderful adventure",
+    "Life is easier knowing i have the best girl with the best booty by my side",
   ];
 
   const sendVirtualHug = () => {
