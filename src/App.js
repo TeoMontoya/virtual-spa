@@ -11,16 +11,18 @@ const VirtualSpa = () => {
   const [isHugging, setIsHugging] = useState(false);
   const [currentNoteIndex, setCurrentNoteIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState({});
-  const audioRef = useRef(
-    new Audio(process.env.PUBLIC_URL + "/sounds/lofi.mp3")
-  );
+  const audioRef = useRef(null);
 
   useEffect(() => {
-    // Set up audio
+    // Create and set up audio
+    audioRef.current = new Audio(process.env.PUBLIC_URL + "/sounds/lofi.mp3");
     audioRef.current.loop = true;
+
     return () => {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
     };
   }, []);
 
