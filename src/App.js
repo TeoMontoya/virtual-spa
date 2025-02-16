@@ -12,9 +12,7 @@ const VirtualSpa = () => {
   const [currentNoteIndex, setCurrentNoteIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState({});
   const audioRef = useRef(
-    new Audio(
-      "https://cdn.pixabay.com/download/audio/2022/02/22/audio_d1718ab41b.mp3"
-    )
+    new Audio(process.env.PUBLIC_URL + "/sounds/lofi.mp3")
   );
 
   useEffect(() => {
