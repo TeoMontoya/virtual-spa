@@ -35,7 +35,6 @@ const VirtualSpa = () => {
     setIsPlaying(!isPlaying);
   };
 
-  // Your existing date calculation code
   const nextMeetingDate = "2025-04-20";
 
   useEffect(() => {
@@ -62,7 +61,6 @@ const VirtualSpa = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Rest of your component code remains the same
   const addHeart = () => {
     const newHeart = {
       id: Date.now(),
@@ -75,7 +73,6 @@ const VirtualSpa = () => {
     }, newHeart.animationDuration * 1000);
   };
 
-  // Your existing love notes
   const loveNotes = [
     "I love how you scrunch your nose when you laugh",
     "Remember when we first kissed? My heart still beats the same way",
@@ -83,6 +80,7 @@ const VirtualSpa = () => {
     "Distance means so little when someone means so much",
     "Every day with you is a wonderful adventure",
     "Life is easier knowing i have the best girl with the best booty by my side",
+    "I cannot wait to wake up next to you every day",
   ];
 
   const sendVirtualHug = () => {
@@ -157,9 +155,9 @@ const VirtualSpa = () => {
           </button>
         </div>
 
-        {/* Rest of your JSX remains the same */}
+        {/*  */}
         <div className="space-y-6">
-          {/* Countdown Timer */}
+          {/*  */}
           <div className="bg-white bg-opacity-50 p-4 rounded-lg shadow-lg text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <Calendar size={20} className="text-pink-500" />
