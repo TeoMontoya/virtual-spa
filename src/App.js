@@ -1,3 +1,4 @@
+import "./App.css";
 import React, { useState, useEffect } from "react";
 import { Heart, Music, Moon, Sun, Cloud, Calendar, Clock } from "lucide-react";
 
@@ -21,7 +22,7 @@ const VirtualSpa = () => {
     // Add more personal messages here!
   ];
 
-  const nextMeetingDate = "2024-03-01"; // Replace with your next meeting date!
+  const nextMeetingDate = "2024-04-20"; // Replace with your next meeting date!
 
   useEffect(() => {
     const calculateTimeLeft = () => {
