@@ -241,19 +241,6 @@ const VirtualSpa = () => {
           </div>
         </div>
       </div>
-
-      <style jsx global>{`
-        @keyframes float {
-          0% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(-300px) scale(0);
-            opacity: 0;
-          }
-        }
-      `}</style>
     </div>
   );
 };
