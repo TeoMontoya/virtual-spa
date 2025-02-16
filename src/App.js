@@ -22,7 +22,7 @@ const VirtualSpa = () => {
     // Add more personal messages here!
   ];
 
-  const nextMeetingDate = "2024-04-20"; // Replace with your next meeting date!
+  const nextMeetingDate = "2025-04-20";
 
   useEffect(() => {
     const calculateTimeLeft = () => {
