@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Heart, Music, Moon, Sun, Cloud, Calendar, Clock } from "lucide-react";
 
 const VirtualSpa = () => {
@@ -11,17 +11,31 @@ const VirtualSpa = () => {
   const [isHugging, setIsHugging] = useState(false);
   const [currentNoteIndex, setCurrentNoteIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState({});
+  const audioRef = useRef(
+    new Audio(
+      "https://cdn.pixabay.com/download/audio/2022/02/22/audio_d1718ab41b.mp3"
+    )
+  );
 
-  // Replace these with your own messages and date!
-  const loveNotes = [
-    "I love how you scrunch your nose when you laugh",
-    "Remember when we first met? My heart still beats the same way",
-    "Your smile brightens my darkest days",
-    "Distance means so little when someone means so much",
-    "Every day with you is a wonderful adventure",
-    // Add more personal messages here!
-  ];
+  useEffect(() => {
+    // Set up audio
+    audioRef.current.loop = true;
+    return () => {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    };
+  }, []);
 
+  const toggleMusic = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  // Your existing date calculation code
   const nextMeetingDate = "2025-04-20";
 
   useEffect(() => {
@@ -48,6 +62,7 @@ const VirtualSpa = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Rest of your component code remains the same
   const addHeart = () => {
     const newHeart = {
       id: Date.now(),
@@ -60,13 +75,21 @@ const VirtualSpa = () => {
     }, newHeart.animationDuration * 1000);
   };
 
+  // Your existing love notes
+  const loveNotes = [
+    "I love how you scrunch your nose when you laugh",
+    "Remember when we first met? My heart still beats the same way",
+    "Your smile brightens my darkest days",
+    "Distance means so little when someone means so much",
+    "Every day with you is a wonderful adventure",
+  ];
+
   const sendVirtualHug = () => {
     setIsHugging(true);
     if (window.navigator.vibrate) {
-      window.navigator.vibrate([100, 100, 100]); // Gentle vibration pattern
+      window.navigator.vibrate([100, 100, 100]);
     }
 
-    // Add multiple floating hugs
     for (let i = 0; i < 5; i++) {
       setTimeout(() => {
         const newHug = {
@@ -78,7 +101,7 @@ const VirtualSpa = () => {
         setTimeout(() => {
           setHugs((prev) => prev.filter((hug) => hug.id !== newHug.id));
         }, newHug.animationDuration * 1000);
-      }, i * 200); // Stagger the appearance of hugs
+      }, i * 200);
     }
 
     setTimeout(() => setIsHugging(false), 2000);
@@ -120,13 +143,20 @@ const VirtualSpa = () => {
           </button>
           <h1 className="text-2xl font-semibold text-center">Virtual Spa</h1>
           <button
-            onClick={() => setIsPlaying(!isPlaying)}
+            onClick={toggleMusic}
             className="p-2 rounded-full hover:bg-opacity-20 hover:bg-gray-500"
+            aria-label={isPlaying ? "Pause music" : "Play music"}
           >
-            <Music size={24} className={isPlaying ? "text-pink-500" : ""} />
+            <Music
+              size={24}
+              className={`transition-colors duration-300 ${
+                isPlaying ? "text-pink-500" : ""
+              }`}
+            />
           </button>
         </div>
 
+        {/* Rest of your JSX remains the same */}
         <div className="space-y-6">
           {/* Countdown Timer */}
           <div className="bg-white bg-opacity-50 p-4 rounded-lg shadow-lg text-center">
